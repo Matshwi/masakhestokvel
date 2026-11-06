@@ -615,7 +615,7 @@ const statusText = document.getElementById('status');
         provider: 'google',
         options: {
           // Optional: Redirects user back here after successful login
-          redirectTo: './members/Overview.html';
+          redirectTo: './members/Overview.html'
         }
       });
 
@@ -635,11 +635,11 @@ const statusText = document.getElementById('status');
       if (session?.user) {
         statusText.textContent = `Logged in as: ${session.user.email}`;
         loginBtn.style.display = 'none';
-        logoutBtn.style.display = 'inline-block';
+        //logoutBtn.style.display = 'inline-block';
       } else {
         statusText.textContent = 'Not logged in.';
         loginBtn.style.display = 'inline-block';
-        logoutBtn.style.display = 'none';
+        //logoutBtn.style.display = 'none';
       }
     });
 
