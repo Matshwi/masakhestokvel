@@ -693,6 +693,11 @@
     </div>
 
     <script>
+      import { createClient } from "https://esm.sh/@supabase/supabase-js";
+
+const supabaseUrl = "https://kbmyjnhtpjhtlayyurub.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtibXlqbmh0cGpodGxheXl1cnViIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM5NjM1NTEsImV4cCI6MjEwOTUzOTU1MX0.B7djw_9uLR6kJi7YBfzT7uY4IUo8acO1MMl7WolueR0";
+const supabase = createClient(supabaseUrl, supabaseKey);
       async function checkLoginProvider() {
   // Always use getUser() on the client side for security verification
   const { data: { user }, error } = await supabase.auth.getUser();
