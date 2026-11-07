@@ -698,17 +698,17 @@ async function readMemberProfile() {
   // 4. Update your HTML elements with the retrieved data
   if (memberData) {
     document.getElementById('useremail').innerText = `Super administrator · ${memberData.surname}`;
-    document.getElementById('Astatus').innerText = memberData.status;
-    document.getElementById('username').innerText = `${memberData.first_name} ${memberData.surname}`;
-    document.getElementById('membernumber').innerText = `Membership: ${user.id} · joined: ${memberData.created_at}`;
+    //document.getElementById('Astatus').innerText = memberData.status;
+    //document.getElementById('username').innerText = `${memberData.first_name} ${memberData.surname}`;
+    //document.getElementById('membernumber').innerText = `Membership: ${user.id} · joined: ${memberData.created_at}`;
     //memberData.mobile_number || "Not provided";
     const appnum = user.id;
     const secondPart = appnum.split('-')[1];
 
-    document.getElementById('applicationnumber').innerText = `APP-2026-${secondPart}`;
+    //document.getElementById('applicationnumber').innerText = `APP-2026-${secondPart}`;
     
     // Clear any loading status text
-    document.getElementById('dateofapp').innerText = memberData.created_at;
+    //document.getElementById('dateofapp').innerText = memberData.created_at;
   }
 }
 
