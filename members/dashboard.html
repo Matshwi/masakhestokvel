@@ -696,7 +696,7 @@ async function readMemberProfile() {
   // 2. Fetch the row from the 'members' table matching the logged-in user's ID
   const { data: memberData, error } = await supabase
     .from('members')
-    .select('first_name, surname, email, mobile_number, status')
+    .select('first_name, surname, email, mobile_number, status, created_at')
     .eq('id', user.id) // Filter by the current user's ID
     .single();         // Fetch as a single object instead of an array
 
