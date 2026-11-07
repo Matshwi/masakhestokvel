@@ -605,7 +605,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 const loginBtn = document.getElementById('loginBtn');
 const logoutBtn = document.getElementById('logoutBtn');
-const statusText = document.getElementById('status');
+//const statusText = document.getElementById('status');
  
  //using google account
 
@@ -633,11 +633,11 @@ const statusText = document.getElementById('status');
         // 4. Track User Authentication State Changes
     supabase.auth.onAuthStateChange((event, session) => {
       if (session?.user) {
-        statusText.textContent = `Logged in as: ${session.user.email}`;
+        //statusText.textContent = `Logged in as: ${session.user.email}`;
         loginBtn.style.display = 'none';
         //logoutBtn.style.display = 'inline-block';
       } else {
-        statusText.textContent = 'Not logged in.';
+        //statusText.textContent = 'Not logged in.';
         loginBtn.style.display = 'inline-block';
         //logoutBtn.style.display = 'none';
       }
