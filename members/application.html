@@ -723,7 +723,7 @@ const formsubmit = document.getElementById('members-form');
  //using google account
 
     // 2. Handle Google Authentication Flow
-    formsubmit.addEventListener('click', async (e) => {
+    formsubmit.addEventListener('submit', async (e) => {
       e.preventDefault();
   // 1. Get the current logged-in user's ID
   const { data: { user }, error: authError } = await supabase.auth.getUser();
