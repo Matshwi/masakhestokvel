@@ -715,10 +715,12 @@ async function readMemberProfile() {
 // Automatically load the profile when the page opens
 window.addEventListener('DOMContentLoaded', readMemberProfile);
 
-const statusValue = "submitted";
+
 
 
 async function fetchMembersByStatus(statusValue) {
+
+  console.log(statusValue);
   // statusValue could be 'active', 'pending', 'expired', etc.
   const { data: members, error } = await supabase
     .from('members')
@@ -767,7 +769,10 @@ function displayMembersInTable(membersArray) {
   });
 }
 
-
+// 4. THE CALL ON PAGE LOAD (The block from above)
+document.addEventListener('DOMContentLoaded', () => {
+  fetchMembersByStatus('submitted'); 
+});
 
     </script>
  
