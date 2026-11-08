@@ -807,7 +807,7 @@ async function updateSubmittedCount() {
     document.getElementById('memberid').innerText = memberId;
     //if (inputField) inputField.value = ;
 // Assuming you store the active member's ID in a variable when the modal opens
-let activeMemberId = "MEMBER_UUID_HERE"; // 👈 Make sure this gets populated when you click a user!
+let activeMemberId = memberId; // 👈 Make sure this gets populated when you click a user!
 
 document.addEventListener('DOMContentLoaded', () => {
   const modalForm = document.getElementById('modal-form');
