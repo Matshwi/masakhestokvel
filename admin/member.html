@@ -713,15 +713,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // fetchMemberDetailsFromServer(memberId);
 
     // 2. Fetch the row from the 'members' table matching the logged-in user's ID
-  const { data: memberDatas, error } = supabase
+  const { data: memberDatas, error: memberError } = supabase
     .from('members')
     .select('first_name, surname, email, mobile_number, status, created_at')
     .eq('id', memberId) // Filter by the current user's ID
     .single();         // Fetch as a single object instead of an array
 
       // 3. Handle errors or missing profiles
-  if (error) {
-    console.error("Error fetching member data:", error.message);
+  if (memberError) {
+    console.error("Error fetching member data:", memberError.message);
     document.getElementById('profile-status').innerText = "Profile not found or access denied.";
     return;
   }
