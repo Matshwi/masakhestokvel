@@ -691,7 +691,7 @@ async function readMemberProfile() {
 window.addEventListener('DOMContentLoaded', readMemberProfile);
 
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   // 1. Get the current URL's query string (e.g., "?id=1234-abcd-5678")
   const queryString = window.location.search;
   
@@ -713,7 +713,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // fetchMemberDetailsFromServer(memberId);
 
     // 2. Fetch the row from the 'members' table matching the logged-in user's ID
-  const { data: memberDatas, error: memberError } = supabase
+  const { data: memberDatas, error: memberError } = await supabase
     .from('members')
     .select('first_name, surname, email, mobile_number, status, created_at')
     .eq('id', memberId) // Filter by the current user's ID
