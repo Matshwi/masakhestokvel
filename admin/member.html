@@ -806,21 +806,61 @@ async function updateSubmittedCount() {
     // Example A: Autofill an input field with the value
     document.getElementById('memberid').innerText = memberId;
     //if (inputField) inputField.value = ;
-const approveuser = document.getElementById("saveModalChanges");
-     approveuser.addEventListener('click', async () => {
-console.log
-     const newStatus = document.getElementById("modalstatus").value;
-      // 1. Send the update request to Supabase
-  const { data, error } = await supabase
-    .from('members')
-    .update({ status: newStatus }) // 👈 The column you want to change and its new value
-    .eq('id', memberId);           // 👈 Critical: Targets ONLY this specific person's UUID
-      
+// Assuming you store the active member's ID in a variable when the modal opens
+let activeMemberId = "MEMBER_UUID_HERE"; // 👈 Make sure this gets populated when you click a user!
 
-      if (error) {
-        alert('Authentication error: ' + error.message);
+document.addEventListener('DOMContentLoaded', () => {
+  const modalForm = document.getElementById('modal-form');
+
+  if (modalForm) {
+    // 1. Listen for the form submission event
+    modalForm.addEventListener('submit', async (event) => {
+      // 2. Prevent the form from refreshing the entire page
+      event.preventDefault();
+
+      // 3. Extract the chosen value from your <select> element
+      const statusSelect = document.getElementById('modalstatus');
+      const selectedStatus = statusSelect.value;
+
+      if (!activeMemberId) {
+        alert("Error: No member selected.");
+        return;
+      }
+
+      // Disable the button to prevent double-clicking while uploading
+      const submitBtn = document.getElementById('saveModalChanges');
+      if (submitBtn) submitBtn.disabled = true;
+
+      try {
+        // 4. Send the update request to your Supabase members table
+        const { data, error } = await supabase
+          .from('members')
+          .update({ status: selectedStatus }) // 👈 Updates the status column
+          .eq('id', activeMemberId);          // 👈 Targets this single person
+
+        if (error) {
+          throw error;
+        }
+
+        console.log(`Successfully updated member status to: ${selectedStatus}`);
+        alert("Membership status updated successfully!");
+
+        // 5. Clean up (Optional: close modal and reload your layout)
+        if (typeof closeModal === 'function') {
+          closeModal(); 
+        }
+        
+      } catch (err) {
+        console.error("Database update failed:", err.message);
+        alert("Failed to update status: " + err.message);
+      } finally {
+        // Re-enable button when done
+        if (submitBtn) submitBtn.disabled = false;
       }
     });
+  }
+});
+
 
     // Example B: Use the ID to immediately query Supabase
     // fetchMemberDetailsFromServer(memberId);
