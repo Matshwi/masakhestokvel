@@ -713,7 +713,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // fetchMemberDetailsFromServer(memberId);
 
     // 2. Fetch the row from the 'members' table matching the logged-in user's ID
-  const { data: memberDatas, error } = await supabase
+  const { data: memberDatas, error } = supabase
     .from('members')
     .select('first_name, surname, email, mobile_number, status, created_at')
     .eq('id', memberId) // Filter by the current user's ID
