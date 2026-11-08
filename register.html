@@ -616,7 +616,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 const loginBtn = document.getElementById('loginBtn');
 const logoutBtn = document.getElementById('logoutBtn');
-const statusText = document.getElementById('status');
+//const statusText = document.getElementById('status');
  
  //using google account
 
@@ -626,7 +626,7 @@ const statusText = document.getElementById('status');
         provider: 'google',
         options: {
           // Optional: Redirects user back here after successful login
-          redirectTo: './members/Overview.html'
+          redirectTo: './members/overview.html'
         }
       });
 
@@ -644,11 +644,11 @@ const statusText = document.getElementById('status');
         // 4. Track User Authentication State Changes
     supabase.auth.onAuthStateChange((event, session) => {
       if (session?.user) {
-        statusText.textContent = `Logged in as: ${session.user.email}`;
+        //statusText.textContent = `Logged in as: ${session.user.email}`;
         loginBtn.style.display = 'none';
         //logoutBtn.style.display = 'inline-block';
       } else {
-        statusText.textContent = 'Not logged in.';
+        //statusText.textContent = 'Not logged in.';
         loginBtn.style.display = 'inline-block';
         //logoutBtn.style.display = 'none';
       }
@@ -687,7 +687,7 @@ const statusText = document.getElementById('status');
         // Note: By default, Supabase requires email verification.
         alert('Signup successful! Please check your email inbox to confirm your registration.');
         signupForm.reset();
-        window.location.href = './members/Overview.html';
+        window.location.href = './members/overview.html';
       }
     });
 
