@@ -713,7 +713,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // fetchMemberDetailsFromServer(memberId);
 
     // 2. Fetch the row from the 'members' table matching the logged-in user's ID
-  const { data: memeberdetails, error } = await supabase
+  const { data: memberDatas, error } = await supabase
     .from('members')
     .select('first_name, surname, email, mobile_number, status, created_at')
     .eq('id', memberId) // Filter by the current user's ID
@@ -727,16 +727,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 4. Update your HTML elements with the retrieved data
-  if (memeberdetails) {
-    document.getElementById('username').innerText = memeberdetails.first_name +" "+ memeberdetails.surname;
-    document.getElementById('Astatus').innerText = memeberdetails.status;
-    document.getElementById('greetings').innerText = `Hello ${memeberdetails.first_name}`;
-    document.getElementById('membernumber').innerText = `Membership: ${user.id} · joined: ${memeberdetails.created_at}`;
-    //memeberdetails.mobile_number || "Not provided";
+  if (memberDatas) {
+    document.getElementById('username').innerText = memberDatas.first_name +" "+ memberDatas.surname;
+    document.getElementById('Astatus').innerText = memberDatas.status;
+    document.getElementById('greetings').innerText = `Hello ${memberDatas.first_name}`;
+    document.getElementById('membernumber').innerText = `Membership: ${user.id} · joined: ${memberDatas.created_at}`;
+    //memberDatas.mobile_number || "Not provided";
     
     // Clear any loading status text
-    document.getElementById('mstatus').innerText = memeberdetails.status;
-    document.getElementById('userdetails').innerText = `${memeberdetails.email} · ${memeberdetails.mobile_number} · applied ${memeberdetails.created_at}`;
+    document.getElementById('mstatus').innerText = memberDatas.status;
+    document.getElementById('userdetails').innerText = `${memberDatas.email} · ${memberDatas.mobile_number} · applied ${memberDatas.created_at}`;
   }
 
 
