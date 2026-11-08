@@ -763,13 +763,13 @@ async function updateSubmittedCount() {
   // 4. Update your HTML elements with the retrieved data
   if (memberDatas) {
     document.getElementById('username').innerText = memberDatas.first_name +" "+ memberDatas.surname;
-    document.getElementById('Astatus').innerText = memberDatas.status;
-    document.getElementById('greetings').innerText = `Hello ${memberDatas.first_name}`;
-    document.getElementById('membernumber').innerText = `Membership: ${user.id} · joined: ${memberDatas.created_at}`;
+    //document.getElementById('Astatus').innerText = memberDatas.status;
+    //document.getElementById('greetings').innerText = `Hello ${memberDatas.first_name}`;
+    //document.getElementById('membernumber').innerText = `Membership: ${user.id} · joined: ${memberDatas.created_at}`;
     //memberDatas.mobile_number || "Not provided";
     
     // Clear any loading status text
-    document.getElementById('mstatus').innerText = memberDatas.status;
+    //document.getElementById('mstatus').innerText = memberDatas.status;
     document.getElementById('userdetails').innerText = `${memberDatas.email} · ${memberDatas.mobile_number} · applied ${memberDatas.created_at}`;
   }
 
